@@ -1,22 +1,24 @@
-const express = require('express');
+// node module
 const path = require('path');
+// npm packages
+const express = require('express');
 const hbs = require('hbs');
 
-const app = express();
+const app = express(); // as express is a funcion we should assine a variable to get the output of that funcion
 
-const publicpath = path.join(__dirname , '../public');
-const hbsviews = path.join(__dirname, '../templates/views');
-const partialspath = path.join(__dirname,'../templates/partials')
+const publicpath = path.join(__dirname , '../public'); // path direction to get the public static direction
+const hbsviews = path.join(__dirname, '../templates/views'); // path to get the views templates of hbs
+const partialspath = path.join(__dirname,'../templates/partials') // path to get the partials (hea)
 
-app.set('view engine' , 'hbs');
-app.set('views' , hbsviews)
+app.set('view engine' , 'hbs'); // setting up the view engine of express to the engine of hbs here 'view engine ' is the input and 'hbs ' is the output
+app.set('views' , hbsviews) // setting up the views folter to another directory
 
-hbs.registerPartials(partialspath)
+hbs.registerPartials(partialspath) // re-registering the pertials directory of hbs here the partials are header and footer
 
-app.use(express.static(publicpath))
+app.use(express.static(publicpath)) // public static is set to use images css files and etc
 
 
-app.get('/',(req,res)=> {
+app.get('/',(req,res)=> { 
     res.render('index' , {
         title: 'weather App',
         name: 'Harish Tagadghar'
