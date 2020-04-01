@@ -36,6 +36,13 @@ app.get('/weather', (req,res)=> {
         title: 'weather',
         name:'Harish Tagadghar'
     })
+});
+
+app.get('*' , (req,res) => {
+    res.render('404' , {
+        title : '404',
+        name: 'Harish Tagadghar'
+    })
 })
 
 app.listen(3000,(req,res)=> {

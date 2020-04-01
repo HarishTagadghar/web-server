@@ -1,7 +1,33 @@
-h1 {
-    color: gray
+body {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 16px;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
-img {
-    margin-top: 10px;
+.main-content {
+    flex-grow: 1;
+}
+.main-content h1{
+    font-size: 64px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 26px 0;
+}
+
+.main-content a {
+    color: #888888;
+    list-style: none;
+    text-decoration: none;
+    font-size: 22px;
+    padding-left: 16px;
+}
+.footer {
+    border-top: 1px solid gray;
+    text-align: center;
+}
+.img {
     width: 250px;
+    margin-top: 16px;
 }
