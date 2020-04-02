@@ -4,6 +4,10 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 
+// importing the forecast and geocode module
+const forecast = require('./utils/forecast') 
+const geocode = require('./utils/geocode') 
+
 const app = express(); // as express is a funcion we should assine a variable to get the output of that funcion
 
 const publicpath = path.join(__dirname , '../public'); // path direction to get the public static direction
@@ -37,6 +41,31 @@ app.get('/weather', (req,res)=> {
         name:'Harish Tagadghar'
     })
 });
+app.get('/address', (req,res) => {
+    if(!req.query.addres){
+        return res.send({
+            error:'you mush provide a address'
+        })
+    }
+    geocode ( req.query.addres, (error,{longitude,latitude,location}) => {
+        if(error){
+            return res.send({error});
+        }
+        forecast(longitude,latitude, (error,forecastData) => {
+            if(error){
+                res.send({error});
+            }
+            res.send({
+                forecast:forecastData,
+                location,
+                address:req.query.addres
+            })
+        })
+    })
+
+
+
+})
 
 app.get('*' , (req,res) => {
     res.render('404' , {
