@@ -7,7 +7,7 @@ request({url:url , json : true},(error,respond) => {
     }else if (respond.body.error) {
         callback('incorrect location',data)
     }else {
-        callback(undefined,`${respond.body.daily.summary} It is currently ${respond.body.currently.temperature} degree out`)
+        callback(undefined,`${respond.body.daily.summary} It is currently ${Math.round((respond.body.currently.temperature- 32) * 5/9)} degree out`)
     }
 })
 

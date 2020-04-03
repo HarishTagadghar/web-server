@@ -47,13 +47,13 @@ app.get('/address', (req,res) => {
             error:'you mush provide a address'
         })
     }
-    geocode ( req.query.addres, (error,{longitude,latitude,location}) => {
+    geocode ( req.query.addres, (error,{longitude,latitude,location} = {}) => {
         if(error){
             return res.send({error});
         }
         forecast(longitude,latitude, (error,forecastData) => {
             if(error){
-                res.send({error});
+               return res.send({error});
             }
             res.send({
                 forecast:forecastData,
