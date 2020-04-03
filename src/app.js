@@ -73,8 +73,8 @@ app.get('*' , (req,res) => {
         name: 'Harish Tagadghar'
     })
 })
-
-app.listen(3000,(req,res)=> {
+let port = process.env.PORT || 3000
+app.listen(port,(req,res)=> {
     console.log('servier is running on port 3000');
     
 })

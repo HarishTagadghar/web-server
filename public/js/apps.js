@@ -15,7 +15,7 @@ submit.addEventListener('submit', (e) => {
     msg_1.textContent = 'loading..';
     msg_2.textContent = ''
 
-    fetch(`http://localhost:3000/address?addres=${input.value}`).then((respond)=>{ // fetching the localhost api 
+    fetch(`/address?addres=${input.value}`).then((respond)=>{ // fetching the localhost api 
     respond.json().then((data)=>{
      if(data.error){
          msg_1.textContent = data.error
