@@ -37,7 +37,7 @@ app.get('/about', (req,res)=> {
 });
 app.get('/weather', (req,res)=> {
     res.render('weather' , {
-        title: 'weather',
+        title: 'API',
         name:'Harish Tagadghar'
     })
 });
